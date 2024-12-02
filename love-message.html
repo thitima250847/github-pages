@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Message</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 3s ease-in-out 1s;
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: heartbeat 1s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .share-button {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 3s ease-in-out 2s;
+        }
+
+        .share-button:hover {
+            background-color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+    <h1>สวัดดีครับคนน่ารักของเค้า</h1>
+    <p>กินยาหน่อยได้มั้ยจะได้หายเป็นหวัด เค้าเป็นห่วง ❤️</p>
+
+    <div class="button-container">
+        <button class="share-button" onclick="shareLove()">แชร์ให้คนอื่นดู</button>
+    </div>
+
+    <script>
+        function shareLove() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url)
+                .then(() => alert("ลิงก์ถูกคัดลอกแล้ว! วางในแชทหรือส่งให้แฟนได้เลย 💕"))
+                .catch(() => alert("ไม่สามารถคัดลอกลิงก์ได้"));
+        }
+    </script>
+</body>
+</html>
